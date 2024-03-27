@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.AR;
@@ -7,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit.AR;
 public class UIManager : MonoBehaviour
 {
     [Header("Prefab Placement Fields")]
-    [SerializeField] private Button[] _buttons;
+    [SerializeField] private Button[] _placementButtons;
     private Button _selectedButton;
     [SerializeField] private Color _selectedColor;
     private Color[] _originalButtonColors;
@@ -15,17 +13,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject[] _placementPrefabs;
 
     [Header("Utility Fields")]
-    private Examinable _selectedExaminable;
-    private bool _inExamineMode;
     [SerializeField] private ExaminableManager _examinableManager;
-    [SerializeField] private Button _examineButton; 
+    [SerializeField] private Button[] _functionButtons;
+    private bool _inExamineMode;
+
 
     private void Start()
     {
-        _originalButtonColors = new Color[_buttons.Length];
-        for (int i = 0; i < _buttons.Length; i++)
+        _originalButtonColors = new Color[_placementButtons.Length];
+        for (int i = 0; i < _placementButtons.Length; i++)
         {
-            _originalButtonColors[i] = _buttons[i].colors.normalColor;
+            _originalButtonColors[i] = _placementButtons[i].colors.normalColor;
         }
     }
 
@@ -53,18 +51,18 @@ public class UIManager : MonoBehaviour
 
     private void UpdateButtonColors()
     {
-        for (int i = 0; i < _buttons.Length;i++)
+        for (int i = 0; i < _placementButtons.Length;i++)
         {
-            ColorBlock cb = _buttons[i].colors;
-            cb.normalColor = (_buttons[i] == _selectedButton) ? _selectedColor : _originalButtonColors[i];
-            cb.selectedColor = (_buttons[i] == _selectedButton) ? _selectedColor : _originalButtonColors[i];
-            _buttons[i].colors = cb;
+            ColorBlock cb = _placementButtons[i].colors;
+            cb.normalColor = (_placementButtons[i] == _selectedButton) ? _selectedColor : _originalButtonColors[i];
+            cb.selectedColor = (_placementButtons[i] == _selectedButton) ? _selectedColor : _originalButtonColors[i];
+            _placementButtons[i].colors = cb;
         }
     }
 
     public void DisablePrefabButtonOnPlacement()
     {
-        foreach(Button button in _buttons)
+        foreach(Button button in _placementButtons)
         {
             if (button.name == _selectedButton.name)
             {
@@ -74,10 +72,6 @@ public class UIManager : MonoBehaviour
         }        
     }
 
-    public void EnablePrefabButtonOnPlacement()
-    {
-        
-    }
 
     public void SwitchToExamineMode()
     {
@@ -94,17 +88,25 @@ public class UIManager : MonoBehaviour
         return _inExamineMode;
     }
 
-   /* public void RequestExamine()
+    public void DisableFunctionButtonByName(string name)
     {
-        if(_selectedExaminable != null)
+        foreach (Button button in _functionButtons)
         {
-            _selectedExaminable.IsExamined(true);
-            _examinableManager.PerformExamine(_selectedExaminable);
-        }  
+            if (button.name == name)
+            {
+                button.interactable = false;
+            }
+        }
     }
 
-    public void RequestUnexamine()
+    public void EnableFunctionButtonByName(string name)
     {
-        _examinableManager.PerformUnexamine();
-    }*/
+        foreach (Button button in _functionButtons)
+        {
+            if (button.name == name)
+            {
+                button.interactable = true;
+            }
+        }
+    }
 }

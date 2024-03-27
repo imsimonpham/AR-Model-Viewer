@@ -7,6 +7,7 @@ public class Examinable : MonoBehaviour
     private UIManager _uiManager; 
 
     [SerializeField] private GameObject _selectionVis;
+    [SerializeField] private float _examineScaleOffset;
 
     [Header("Interactables")]
     [SerializeField] ARTranslationInteractable _translation;
@@ -39,5 +40,31 @@ public class Examinable : MonoBehaviour
             _rotation.enabled = true;
             _scale.enabled = true;
         }
+    }
+
+    public void RequestExamine()
+    {
+        if (_uiManager.IsInExamineMode())
+        {
+            _examinableManager.PerformExamine(this);
+        } 
+    }
+
+    public void RequestUnexamine()
+    {
+        if (_uiManager.IsInExamineMode())
+        {
+            _examinableManager.PerformUnexamine();
+        }  
+    }
+
+    public GameObject GetSelectionVis()
+    {
+        return _selectionVis;
+    }
+
+    public float GetExamineScaleOffset()
+    {
+        return _examineScaleOffset;
     }
 }

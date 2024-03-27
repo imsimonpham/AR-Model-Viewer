@@ -2507,18 +2507,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70c4d30017831043933a8f40406fdd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttons:
+  _placementButtons:
   - {fileID: 621505652}
   - {fileID: 391756649}
   - {fileID: 381384827}
   _selectedColor: {r: 0.8396226, g: 0.52674437, b: 0.52674437, a: 1}
   _ARPlacementInteractable: {fileID: 361215378}
   _placementPrefabs:
-  - {fileID: 1709954295673212383, guid: dbe0d821cf9c12f41bf52f70e43cb3f6, type: 3}
-  - {fileID: 3271877541712000584, guid: 722493d0e4ed2f142812b998a8ee9161, type: 3}
-  - {fileID: 4372656909375373972, guid: 82c7fb23db735e84ca9c91297f384ee8, type: 3}
+  - {fileID: 4038008086483682753, guid: dbe0d821cf9c12f41bf52f70e43cb3f6, type: 3}
+  - {fileID: 711504222922363649, guid: 722493d0e4ed2f142812b998a8ee9161, type: 3}
+  - {fileID: 3569424892445587306, guid: 82c7fb23db735e84ca9c91297f384ee8, type: 3}
   _examinableManager: {fileID: 2049825527}
-  _examineButton: {fileID: 896692156}
+  _functionButtons:
+  - {fileID: 533628494}
+  - {fileID: 896692156}
+  - {fileID: 556866399}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,7 +2766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -79.068, y: -161.285}
+  m_AnchoredPosition: {x: -79.068115, y: -161.28503}
   m_SizeDelta: {x: 158.137, y: 317.549}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &927043062
@@ -3822,6 +3825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _examineTarget: {fileID: 1567822703}
+  _uiManager: {fileID: 776721781}
 --- !u!1 &2103312944
 GameObject:
   m_ObjectHideFlags: 0
