@@ -1,13 +1,19 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class Examinable : MonoBehaviour
 {
     private ExaminableManager _examinableManager;
-    private UIManager _uiManager; 
+    private FunctionManager _functionManager;
+    private UIManager _uiManager;
+    private bool _isSelected;
 
     [SerializeField] private GameObject _selectionVis;
     [SerializeField] private float _examineScaleOffset;
+    [SerializeField] private Actions _actions;
+    [SerializeField] private Button _playButton;
 
     [Header("Interactables")]
     [SerializeField] ARTranslationInteractable _translation;
@@ -26,6 +32,12 @@ public class Examinable : MonoBehaviour
         {
             Debug.LogError("UI Manager is null");
         }
+        _functionManager = GameObject.FindObjectOfType<FunctionManager>();
+        if(_functionManager == null)
+        {
+            Debug.LogError("Function Manager is null");
+        }
+
     }
 
     private void Update()
@@ -58,13 +70,35 @@ public class Examinable : MonoBehaviour
         }  
     }
 
-    public GameObject GetSelectionVis()
+    public void RequestSelectExaminable()
     {
-        return _selectionVis;
+        _functionManager.SelectExaminable(this);
     }
 
-    public float GetExamineScaleOffset()
+    public void RequestUnselectExaminable()
     {
-        return _examineScaleOffset;
+        _functionManager.UnselectExaminable();
+    }
+
+    public GameObject GetSelectionVis() { return _selectionVis; }
+
+    public float GetExamineScaleOffset() { return _examineScaleOffset; }
+
+    public Actions GetActions() { return _actions; }
+
+    public void SetIsSelected(bool isSelected)
+    {
+        if (isSelected)
+        {
+            _isSelected = true;
+        }else
+        {
+            _isSelected = false;
+        }
+    }
+
+    public bool GetIsSelected()
+    {
+        return _isSelected;
     }
 }

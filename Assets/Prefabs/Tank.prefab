@@ -200,11 +200,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1896054165058727268}
   - component: {fileID: 1151180327243758952}
-  - component: {fileID: 5694469838339865226}
   - component: {fileID: 483566098867041084}
   - component: {fileID: 992359725376215822}
   - component: {fileID: 2489466770395134392}
   - component: {fileID: 8967532674030153590}
+  - component: {fileID: 5694469838339865226}
+  - component: {fileID: -273086965041031408}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -249,23 +250,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.07667446, y: 0.025749646, z: 0.039686203}
   m_Center: {x: 0.009447813, y: 0.012125175, z: -0.0005598068}
---- !u!114 &5694469838339865226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3569424892445587306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0108ce1d23aef1a479b005924a277eda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selectionVis: {fileID: 2308866219741142450}
-  _examineScaleOffset: 1.8
-  _translation: {fileID: 992359725376215822}
-  _rotation: {fileID: 2489466770395134392}
-  _scale: {fileID: 8967532674030153590}
 --- !u!114 &483566098867041084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +659,45 @@ MonoBehaviour:
   m_ElasticRatioLimit: 1
   m_Sensitivity: 1
   m_Elasticity: 1
+--- !u!114 &5694469838339865226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569424892445587306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0108ce1d23aef1a479b005924a277eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectionVis: {fileID: 2308866219741142450}
+  _examineScaleOffset: 1.8
+  _actions: {fileID: 0}
+  _playButton: {fileID: 0}
+  _translation: {fileID: 992359725376215822}
+  _rotation: {fileID: 2489466770395134392}
+  _scale: {fileID: 8967532674030153590}
+--- !u!114 &-273086965041031408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569424892445587306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f274a1fda958f5146891cfba1f25b9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabName: Tank
+  _propeller: {fileID: 0}
+  _acceleration: 0
+  _maxSpeed: 0
+  _bobbingSpeed: 0
+  _bobbingAmount: 0
+  _yPosBoost: 0
+  _turret: {fileID: 3744179687041889340}
 --- !u!1 &3744179687041889340
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +710,7 @@ GameObject:
   - component: {fileID: 3207622205920904397}
   - component: {fileID: 2116167135551897229}
   m_Layer: 0
-  m_Name: Plane.010
+  m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,7 +723,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3744179687041889340}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0

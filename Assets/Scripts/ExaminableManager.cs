@@ -41,15 +41,16 @@ public class ExaminableManager : MonoBehaviour
         _cachedScale = _currentExaminedObj.transform.localScale;
         _cachedParent = _currentExaminedObj.transform.parent;
 
-        //move the examinable to the target position
-        _currentExaminedObj.transform.position = _examineTarget.position;
+        //move the examinable to the target position (parent first)
         _currentExaminedObj.transform.parent = _examineTarget;
+        _currentExaminedObj.transform.position = _examineTarget.position;
+        
 
         //offset the examinable's scalse
         _currentExaminedObj.transform.localScale = _cachedScale * _currentExaminedObj.GetExamineScaleOffset();
 
         //disable pick and place button
-        _uiManager.DisableFunctionButtonByName("PickandPlace");
+        _uiManager.DisableButtonByName("PickandPlace");
 
         _isExamining = true;
     }
@@ -59,16 +60,18 @@ public class ExaminableManager : MonoBehaviour
         //unhide selection vis
         _currentExaminedObj.GetSelectionVis().GetComponent<MeshRenderer>().enabled = true;
 
-        //restore all transform data
+        //restore all transform data (parent first)
+        _currentExaminedObj.transform.parent = _cachedParent;
         _currentExaminedObj.transform.position = _cachedPos;
         _currentExaminedObj.transform.rotation = _cachedRot;
         _currentExaminedObj.transform.localScale = _cachedScale;
-        _currentExaminedObj.transform.parent = _cachedParent;
+        
 
         //enable pick and place button
-        _uiManager.EnableFunctionButtonByName("PickandPlace");
+        _uiManager.EnableButtonByName("PickandPlace");
 
         _isExamining = false;
+        _currentExaminedObj = null;
     }
 }
 
