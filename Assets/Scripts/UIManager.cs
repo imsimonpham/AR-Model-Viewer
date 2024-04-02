@@ -4,7 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("Prefab Placement Fields")]
+    /*[Header("Prefab Placement Fields")]
     [SerializeField] private Button[] _placementButtons;
     private Button _selectedButton;
     [SerializeField] private Color _selectedColor;
@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     [Header("Function Fields")]
     [SerializeField] private Button[] _functionButtons;
     [SerializeField] private FunctionManager _functionManager;
-    private bool _funtionsTurnedOn;
+    *//*private bool _funtionsTurnedOn;*//*
 
 
     private void Start()
@@ -99,21 +99,6 @@ public class UIManager : MonoBehaviour
         return _inExamineMode;
     }
 
-    public void TurnOnFunctions()
-    {
-        _funtionsTurnedOn = true;
-    }
-
-    public void TurnOffFunctions()
-    {
-        _funtionsTurnedOn = false;
-    }
-
-    public bool IsFunctionsTurnedOn()
-    {
-        return _funtionsTurnedOn;
-    }
-
     public void DisableButtonByName(string name)
     {
         foreach (Button button in _functionButtons)
@@ -160,33 +145,13 @@ public class UIManager : MonoBehaviour
 
     public void RequestPlayActions()
     {
+        if( _inExamineMode) { return; }
         _functionManager.PerformPlayActions();
     }
 
     public void RequestStopActions()
     {
+        if (_inExamineMode) { return; }
         _functionManager.PerformStopActions();
-    }
-
-    /*public void SetSelectedExaminable(Examinable examinable)
-    {
-        Debug.Log("UIManager: Before selectedexaminable: " + examinable);
-        _selectedExaminable = examinable;
-        Debug.Log("UIManager: After selectedexaminable " + _selectedExaminable);
-    }*/
-
-   /* public void ResetSelectedExaminable()
-    {
-        _selectedExaminable = null;
-    }*/
-
-    /*public void PerformPlayActions()
-    {
-        _selectedExaminable.PlayActions();
-    }
-
-    public void PerformStopActions()
-    {
-        _selectedExaminable.StopActions();
     }*/
 }

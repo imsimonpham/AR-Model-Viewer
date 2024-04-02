@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class Examinable : MonoBehaviour
 {
-    private ExaminableManager _examinableManager;
+    /*private ExaminableManager _examinableManager;
     private FunctionManager _functionManager;
     private UIManager _uiManager;
     private bool _isSelected;
@@ -100,5 +100,5 @@ public class Examinable : MonoBehaviour
     public bool GetIsSelected()
     {
         return _isSelected;
-    }
+    }*/
 }

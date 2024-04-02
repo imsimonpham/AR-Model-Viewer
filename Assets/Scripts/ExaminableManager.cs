@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ExaminableManager : MonoBehaviour
 {
-    [SerializeField] private Transform _examineTarget;
+    /*[SerializeField] private Transform _examineTarget;
     [SerializeField] private UIManager _uiManager;
 
     private Vector3 _cachedPos;
@@ -72,6 +72,6 @@ public class ExaminableManager : MonoBehaviour
 
         _isExamining = false;
         _currentExaminedObj = null;
-    }
+    }*/
 }
 

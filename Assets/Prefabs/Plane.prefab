@@ -519,7 +519,6 @@ GameObject:
   - component: {fileID: 217620665217201863}
   - component: {fileID: 6974113468382687360}
   - component: {fileID: 920456769164307593}
-  - component: {fileID: 2097741065612862710}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -905,82 +904,10 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 920456769164307593}
-        m_TargetAssemblyTypeName: Examinable, Assembly-CSharp
-        m_MethodName: SetIsSelected
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 920456769164307593}
-        m_TargetAssemblyTypeName: Examinable, Assembly-CSharp
-        m_MethodName: RequestExamine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 920456769164307593}
-        m_TargetAssemblyTypeName: Examinable, Assembly-CSharp
-        m_MethodName: RequestSelectExaminable
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 920456769164307593}
-        m_TargetAssemblyTypeName: Examinable, Assembly-CSharp
-        m_MethodName: SetIsSelected
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 920456769164307593}
-        m_TargetAssemblyTypeName: Examinable, Assembly-CSharp
-        m_MethodName: RequestUnexamine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 920456769164307593}
-        m_TargetAssemblyTypeName: Examinable, Assembly-CSharp
-        m_MethodName: RequestUnselectExaminable
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -1033,32 +960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0108ce1d23aef1a479b005924a277eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectionVis: {fileID: 4533232747777690556}
-  _examineScaleOffset: 1.2
-  _actions: {fileID: 2097741065612862710}
-  _playButton: {fileID: 2685177084415070144}
-  _translation: {fileID: 1674565199265017584}
-  _rotation: {fileID: 836000224404447390}
-  _scale: {fileID: 217620665217201863}
---- !u!114 &2097741065612862710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6095681504914478473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f274a1fda958f5146891cfba1f25b9d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabName: Plane
-  _propeller: {fileID: 4056895527355238287}
-  _acceleration: 500
-  _maxSpeed: 3600
-  _bobbingSpeed: 1
-  _bobbingAmount: 0.03
-  _yPosBoost: 0.1
 --- !u!1 &7997867394734775787
 GameObject:
   m_ObjectHideFlags: 0

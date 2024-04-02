@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FunctionManager : MonoBehaviour
 {
-    private Examinable _selectedExaminable;
+    /*private Examinable _selectedExaminable;
     private bool _isPlayingFunctions;
     [SerializeField] private UIManager _uiManager;
 
@@ -13,6 +13,7 @@ public class FunctionManager : MonoBehaviour
 
     public void SelectExaminable(Examinable examinable)
     {  
+        if(_uiManager.IsInExamineMode()) { return; }
         if (_isPlayingFunctions) { return; }
         //execute these only when examinable is not in function
         _selectedExaminable = examinable;
@@ -21,7 +22,8 @@ public class FunctionManager : MonoBehaviour
 
     public void UnselectExaminable()
     {
-        if(_isPlayingFunctions) { return; }
+        if (_uiManager.IsInExamineMode()) { return; }
+        if (_isPlayingFunctions) { return; }
         //execute these only when examinable is not in function
         _selectedExaminable = null;
         _uiManager.HideButtonByName("Play");
@@ -33,6 +35,7 @@ public class FunctionManager : MonoBehaviour
         if (_selectedExaminable == null) { return; }
         _selectedExaminable.GetActions().PlayActions(true);
         _isPlayingFunctions = true;
+        _uiManager.DisableButtonByName("Examine");
     }
 
     public void PerformStopActions()
@@ -40,8 +43,9 @@ public class FunctionManager : MonoBehaviour
         if (_selectedExaminable == null) { return; }
         _selectedExaminable.GetActions().PlayActions(false);
         _isPlayingFunctions = false;
+        _uiManager.EnableButtonByName("Examine");
         if (_selectedExaminable.GetIsSelected()) { return; }
         //execute this only when examinale is not selected
         UnselectExaminable();
-    }
+    }*/
 }

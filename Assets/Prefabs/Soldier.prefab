@@ -103,13 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0108ce1d23aef1a479b005924a277eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectionVis: {fileID: 3147875416827183700}
-  _examineScaleOffset: 2.5
-  _actions: {fileID: 0}
-  _playButton: {fileID: 0}
-  _translation: {fileID: 8127098917790961594}
-  _rotation: {fileID: 1665141297855665554}
-  _scale: {fileID: 372011105438907373}
 --- !u!114 &4682677796031534064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,34 +153,10 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6606599466844237739}
-        m_TargetAssemblyTypeName: Examinable, Assembly-CSharp
-        m_MethodName: RequestExamine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6606599466844237739}
-        m_TargetAssemblyTypeName: Examinable, Assembly-CSharp
-        m_MethodName: RequestUnexamine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
