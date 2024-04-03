@@ -1,9 +1,37 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.XR.Interaction.Toolkit.AR;
+using System;
 
 public class UIManager : MonoBehaviour
 {
+    private static UIManager _instance;
+    public static UIManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+                Debug.Log("UI Manager is null");
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+
+    private void OnEnable()
+    {
+        
+    }
+
+    public void ToggleModal(GameObject modal)
+    {
+        modal.SetActive(!modal.activeSelf);
+    }
+
+
+
     /*[Header("Prefab Placement Fields")]
     [SerializeField] private Button[] _placementButtons;
     private Button _selectedButton;

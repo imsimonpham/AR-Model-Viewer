@@ -42,11 +42,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3597160764521098220}
   - component: {fileID: 3934104101545695052}
-  - component: {fileID: 6606599466844237739}
   - component: {fileID: 4682677796031534064}
   - component: {fileID: 8127098917790961594}
   - component: {fileID: 1665141297855665554}
   - component: {fileID: 372011105438907373}
+  - component: {fileID: -6466924365816993957}
+  - component: {fileID: 5781499600836139032}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -68,7 +69,7 @@ Transform:
   m_Children:
   - {fileID: 6434666207522722907}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3934104101545695052
 BoxCollider:
@@ -91,18 +92,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.038572017, y: 0.056504987, z: 0.013281398}
   m_Center: {x: 0.0005195942, y: 0.02725188, z: 0.0006468226}
---- !u!114 &6606599466844237739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467122030458736391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0108ce1d23aef1a479b005924a277eda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4682677796031534064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,6 +477,42 @@ MonoBehaviour:
   m_ElasticRatioLimit: 1
   m_Sensitivity: 1
   m_Elasticity: 1
+--- !u!114 &-6466924365816993957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467122030458736391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2a5bcc9cd7dfc49be20427740bd2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5781499600836139032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467122030458736391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f274a1fda958f5146891cfba1f25b9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabName: Soldier
+  _propeller: {fileID: 0}
+  _propellerAcceleration: 0
+  _maxSpinningSpeed: 0
+  _bobbingSpeed: 0
+  _bobbingAmount: 0
+  _yPosBoost: 0
+  _soldierAnim: {fileID: 2811632224622594489}
+  _turret: {fileID: 0}
+  _tankAnim: {fileID: 0}
+  _muzzleFlash: {fileID: 0}
+  _firePoint: {fileID: 0}
 --- !u!1 &614971334049861903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,7 +1889,7 @@ Animator:
   m_GameObject: {fileID: 4733840364308917076}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 87c3a510faf9c40599edd867ea020637, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5681c66f465cc1945b331c1389dd8eb6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &532654956810104589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1747041649137633552}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1747041649137633552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532654956810104589}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 486.1, y: 176.2, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1899623401279896138}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &2308866219741142450
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +235,8 @@ GameObject:
   - component: {fileID: 992359725376215822}
   - component: {fileID: 2489466770395134392}
   - component: {fileID: 8967532674030153590}
-  - component: {fileID: 5694469838339865226}
+  - component: {fileID: 6691215723272723983}
+  - component: {fileID: 2496044448029572763}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -226,7 +258,7 @@ Transform:
   m_Children:
   - {fileID: 4958393107007061748}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1151180327243758952
 BoxCollider:
@@ -634,7 +666,7 @@ MonoBehaviour:
   m_ElasticRatioLimit: 1
   m_Sensitivity: 1
   m_Elasticity: 1
---- !u!114 &5694469838339865226
+--- !u!114 &6691215723272723983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -643,9 +675,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 3569424892445587306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0108ce1d23aef1a479b005924a277eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d2a5bcc9cd7dfc49be20427740bd2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2496044448029572763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569424892445587306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f274a1fda958f5146891cfba1f25b9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabName: Tank
+  _propeller: {fileID: 0}
+  _propellerAcceleration: 0
+  _maxSpinningSpeed: 0
+  _isExecutingActions: 0
+  _bobbingSpeed: 0
+  _bobbingAmount: 0
+  _yPosBoost: 0
+  _soldierAnim: {fileID: 0}
+  _turret: {fileID: 3744179687041889340}
+  _tankAnim: {fileID: 8908804013808488664}
+  _muzzleFlash: {fileID: 590255545225622520, guid: 87ed1aef6f3b4d24881965e3ab20aa41,
+    type: 3}
+  _firePoint: {fileID: 532654956810104589}
 --- !u!1 &3744179687041889340
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,14 +729,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3744179687041889340}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1747041649137633552}
   m_Father: {fileID: 4958393107007061748}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &3207622205920904397
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -738,6 +797,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4958393107007061748}
+  - component: {fileID: 8908804013808488664}
+  - component: {fileID: 8651903566411807905}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -764,6 +825,40 @@ Transform:
   m_Father: {fileID: 1896054165058727268}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &8908804013808488664
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6899276131947998664}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d99c7b5e1c5a114a8c31a7dd057f53f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8651903566411807905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6899276131947998664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8e96bbecce51440961ec4c9ba1b0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actions: {fileID: 2496044448029572763}
 --- !u!1 &6993830061598432989
 GameObject:
   m_ObjectHideFlags: 0

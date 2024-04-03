@@ -518,7 +518,8 @@ GameObject:
   - component: {fileID: 836000224404447390}
   - component: {fileID: 217620665217201863}
   - component: {fileID: 6974113468382687360}
-  - component: {fileID: 920456769164307593}
+  - component: {fileID: 2818441021877972556}
+  - component: {fileID: -2296162063325728537}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -948,7 +949,7 @@ MonoBehaviour:
   m_ExcludeUITouches: 1
   m_ARSessionOrigin: {fileID: 0}
   m_SelectionVisualization: {fileID: 4533232747777690556}
---- !u!114 &920456769164307593
+--- !u!114 &2818441021877972556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -957,9 +958,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 6095681504914478473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0108ce1d23aef1a479b005924a277eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d2a5bcc9cd7dfc49be20427740bd2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2296162063325728537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095681504914478473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f274a1fda958f5146891cfba1f25b9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabName: Plane
+  _propeller: {fileID: 4056895527355238287}
+  _propellerAcceleration: 10
+  _maxSpinningSpeed: 100
+  _bobbingSpeed: 2
+  _bobbingAmount: 0.05
+  _yPosBoost: 0.1
+  _turret: {fileID: 0}
 --- !u!1 &7997867394734775787
 GameObject:
   m_ObjectHideFlags: 0

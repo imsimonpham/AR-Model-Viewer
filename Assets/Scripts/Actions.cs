@@ -10,10 +10,10 @@ public class Actions : MonoBehaviour
     [Header("Plane Actions")]
     //Propeller
     [SerializeField] private GameObject _propeller;
-    [SerializeField] private float _acceleration; 
-    [SerializeField] private float _maxSpeed; 
-    private float _currentSpeed = 0f;
-    private bool _isExecutingActions = false; 
+    [SerializeField] private float _propellerAcceleration; 
+    [SerializeField] private float _maxSpinningSpeed; 
+    private float _currentSpinningSpeed = 0f;
+    private bool _isExecutingActions = true; 
     //Bobbing
     [SerializeField] private float _bobbingSpeed;
     [SerializeField] private float _bobbingAmount;
@@ -24,8 +24,14 @@ public class Actions : MonoBehaviour
     private Vector3 _cachedPos;
     private Quaternion _cachedRot;
 
+    [Header("Soldier Actions")]
+    [SerializeField] private Animator _soldierAnim;
+
     [Header("Tank Actions")]
     [SerializeField] private GameObject _turret;
+    [SerializeField] private Animator _tankAnim;
+    [SerializeField] private GameObject _muzzleFlash;
+    [SerializeField] private GameObject _firePoint;
 
     private void Start()
     {
@@ -50,6 +56,25 @@ public class Actions : MonoBehaviour
                     transform.rotation = _cachedRot;
                 }
                 break;
+            case "Soldier":
+                if (_isExecutingActions)
+                {
+                    _soldierAnim.SetBool("Dance", true);
+                } else
+                {
+                    _soldierAnim.SetBool("Dance", false);
+                }            
+                break;
+            case "Tank":
+                if (_isExecutingActions)
+                {
+                    _tankAnim.SetBool("Fire", true);
+                }
+                else
+                {
+                    _tankAnim.SetBool("Fire", false);
+                }
+                break;
         }
     }
 
@@ -68,14 +93,14 @@ public class Actions : MonoBehaviour
     void SpinPropeller()
     {
         // Check if the propeller is supposed to be spinning
-        _currentSpeed += _acceleration * Time.deltaTime;
-        if (_currentSpeed > _maxSpeed)
+        _currentSpinningSpeed += _propellerAcceleration * Time.deltaTime;
+        if (_currentSpinningSpeed > _maxSpinningSpeed)
         {
-            _currentSpeed = _maxSpeed;
+            _currentSpinningSpeed = _maxSpinningSpeed;
         }
 
         // Rotate the propeller around the Z-axis at the current speed
-        _propeller.transform.Rotate(0, 0, _currentSpeed * Time.deltaTime);
+        _propeller.transform.Rotate(0, 0, _currentSpinningSpeed * Time.deltaTime);
     }
 
     void Bobbing()
@@ -87,6 +112,11 @@ public class Actions : MonoBehaviour
         }
         float bobbing = Mathf.Sin(Time.time * _bobbingSpeed) * _bobbingAmount;
         transform.position = new Vector3(transform.position.x, _defaultYPos + bobbing, transform.position.z);
+    }
+
+    public void InstantiateMuzzleFlash()
+    {
+        Instantiate(_muzzleFlash, _firePoint.transform.position, _turret.transform.rotation);
     }
 
     public bool IsExecutingActions()
