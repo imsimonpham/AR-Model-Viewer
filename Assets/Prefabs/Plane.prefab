@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2512704014504564038}
   - component: {fileID: 79090716850619371}
   - component: {fileID: 952882743296042517}
-  - component: {fileID: 5062603901522822611}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -88,27 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &5062603901522822611
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475091605343677227}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d5729dcbaf67f9b41b601f1e5ccb6400, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2728038064086825595
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +498,7 @@ GameObject:
   - component: {fileID: 6974113468382687360}
   - component: {fileID: 2818441021877972556}
   - component: {fileID: -2296162063325728537}
+  - component: {fileID: 4503072086422265345}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -541,7 +520,7 @@ Transform:
   m_Children:
   - {fileID: 2512704014504564038}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6092499424694058280
 BoxCollider:
@@ -905,10 +884,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2818441021877972556}
+        m_TargetAssemblyTypeName: Model, Assembly-CSharp
+        m_MethodName: SelectModel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2818441021877972556}
+        m_TargetAssemblyTypeName: Model, Assembly-CSharp
+        m_MethodName: UnselectModel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -974,13 +977,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabName: Plane
+  _isExecutingActions: 1
+  _planeAnim: {fileID: 0}
   _propeller: {fileID: 4056895527355238287}
-  _propellerAcceleration: 10
-  _maxSpinningSpeed: 100
-  _bobbingSpeed: 2
-  _bobbingAmount: 0.05
-  _yPosBoost: 0.1
+  _propellerAcceleration: 500
+  _maxSpinningSpeed: 1000
+  _soldierAnim: {fileID: 0}
   _turret: {fileID: 0}
+  _tankAnim: {fileID: 0}
+  _muzzleFlash: {fileID: 0}
+  _firePoint: {fileID: 0}
+--- !u!95 &4503072086422265345
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095681504914478473}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 00634ce9a7dfae84aa536906e4f3a4e3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7997867394734775787
 GameObject:
   m_ObjectHideFlags: 0

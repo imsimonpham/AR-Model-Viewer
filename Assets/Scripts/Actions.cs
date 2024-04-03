@@ -1,26 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Actions : MonoBehaviour
 {
     [Header("Generals")]
     [SerializeField] private string _prefabName;
+    [SerializeField] private bool _isExecutingActions = true;
 
     [Header("Plane Actions")]
-    //Propeller
+    [SerializeField] private Animator _planeAnim;
     [SerializeField] private GameObject _propeller;
     [SerializeField] private float _propellerAcceleration; 
-    [SerializeField] private float _maxSpinningSpeed; 
-    private float _currentSpinningSpeed = 0f;
-    private bool _isExecutingActions = true; 
-    //Bobbing
-    [SerializeField] private float _bobbingSpeed;
-    [SerializeField] private float _bobbingAmount;
-    private float _defaultYPos;
-    [SerializeField] private float _yPosBoost;
-    private bool _defaultYPosSet = false;
-    //Cached Data
+    [SerializeField] private float _maxSpinningSpeed;
+    private float _currentSpinningSpeed = 0f; 
     private Vector3 _cachedPos;
     private Quaternion _cachedRot;
 
@@ -37,7 +31,6 @@ public class Actions : MonoBehaviour
     {
         _cachedPos = transform.position;
         _cachedRot = transform.rotation;
-        _defaultYPos = _cachedPos.y;
     }
 
     void Update()
@@ -46,14 +39,13 @@ public class Actions : MonoBehaviour
         {
             case "Plane": 
                 if (_isExecutingActions)
-                {
+                {        
                     SpinPropeller();
-                    Bobbing();
+                    _planeAnim.SetBool("Fly", true);
                 }
                 else
                 {
-                    transform.position = _cachedPos;
-                    transform.rotation = _cachedRot;
+                    _planeAnim.SetBool("Fly", false);
                 }
                 break;
             case "Soldier":
@@ -101,17 +93,6 @@ public class Actions : MonoBehaviour
 
         // Rotate the propeller around the Z-axis at the current speed
         _propeller.transform.Rotate(0, 0, _currentSpinningSpeed * Time.deltaTime);
-    }
-
-    void Bobbing()
-    {
-        if (!_defaultYPosSet)
-        {
-            _defaultYPos += _yPosBoost;
-            _defaultYPosSet = true; // Ensure this block only runs once
-        }
-        float bobbing = Mathf.Sin(Time.time * _bobbingSpeed) * _bobbingAmount;
-        transform.position = new Vector3(transform.position.x, _defaultYPos + bobbing, transform.position.z);
     }
 
     public void InstantiateMuzzleFlash()

@@ -14,22 +14,49 @@ public class UIManager : MonoBehaviour
             return _instance;
         }
     }
-
+    [SerializeField] private Button[] _functionButtions;
     private void Awake()
     {
         _instance = this;
     }
 
-    private void OnEnable()
-    {
-        
-    }
 
     public void ToggleModal(GameObject modal)
     {
         modal.SetActive(!modal.activeSelf);
     }
 
+    public void ShowFunctionButtonByName(string name)
+    {
+        foreach (Button button in _functionButtions)
+        {
+            if (button.name == name)
+            {
+                button.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void HideFunctionButtonByName(string name)
+    {
+        foreach (Button button in _functionButtions)
+        {
+            if (button.name == name)
+            {
+                button.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void RequestPlayingActions()
+    {
+
+    }
+
+    public void RequestStoppingActions()
+    {
+
+    }
 
 
     /*[Header("Prefab Placement Fields")]

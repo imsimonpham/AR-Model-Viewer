@@ -1,7 +1,66 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ModelActionManager : MonoBehaviour
 {
+    private static ModelActionManager _instance;
+    public static ModelActionManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+                Debug.Log("Model Action Manager is null");
+            return _instance;
+        }
+    }   
+    private Model _selectedPlacedModel;
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+
+    private void Update()
+    {
+        if (_selectedPlacedModel != null)
+        {
+            UIManager.Instance.ShowFunctionButtonByName("Play");
+            UIManager.Instance.HideFunctionButtonByName("Pause");
+        }
+        else
+        {
+            UIManager.Instance.HideFunctionButtonByName("Play");
+        }
+
+        if (_selectedPlacedModel.IsPlayingActions())
+        {
+            UIManager.Instance.HideFunctionButtonByName("Play");
+            UIManager.Instance.ShowFunctionButtonByName("Pause");
+        } 
+    }
+
+    public void SetSelectedPlacedModel(Model model)
+    {
+        _selectedPlacedModel = model;
+    }
+
+    public void SetUnselectedPlacedModel()
+    {
+        _selectedPlacedModel = null;
+    } 
+
+    public void RequestPlayingActions()
+    {
+        _selectedPlacedModel.GetComponent<Actions>().PlayActions(true);
+        _selectedPlacedModel.SetIsPlayingActions(true);
+    }
+
+    public void RequestStoppingActions()
+    {
+        _selectedPlacedModel.GetComponent<Actions>().PlayActions(false);
+        _selectedPlacedModel.SetIsPlayingActions(false);
+    }
+
     /*private Examinable _selectedExaminable;
     private bool _isPlayingFunctions;
     [SerializeField] private UIManager _uiManager;
