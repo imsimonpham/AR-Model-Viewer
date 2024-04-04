@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class ModelPlacementManager : MonoBehaviour
 {
-    /*private static ModelPlacementManager _instance;
+    private static ModelPlacementManager _instance;
     public static ModelPlacementManager Instance
     {
         get
@@ -12,15 +13,38 @@ public class ModelPlacementManager : MonoBehaviour
                 Debug.Log("Model Placement Manager is null");
             return _instance;
         }
-    }*/
+    }
     private ModelButton _selectedModelButton;
     [SerializeField] private ARPlacementInteractable _ARPlacementInteractable;
     [SerializeField] private ModelButton[] _modelButtons;
+    private List<Model> _placedModels = new List<Model>();
+    private bool _enabled;
 
-    /*private void Awake()
+    private void Awake()
     {
         _instance = this;
-    }*/
+    }
+
+    private void Update()
+    {
+        if (!_enabled) {
+            UnselectAllModelButtons();
+            ShowModelButtons(false);
+            _selectedModelButton = null;
+            _ARPlacementInteractable.placementPrefab = null;
+            foreach(Model placedModel in _placedModels)
+            {
+                placedModel.DisableInteractables();
+            }
+        } else
+        {
+            ShowModelButtons(true);
+            foreach (Model placedModel in _placedModels)
+            {
+                placedModel.EnableInteractables();
+            }
+        }
+    }
 
     public void SetSelectedPlacementModel(ModelButton button)
     {
@@ -38,6 +62,9 @@ public class ModelPlacementManager : MonoBehaviour
                     modelButton.SetIsSelected(false);
                 }
             }
+        } else
+        {
+            _ARPlacementInteractable.placementPrefab = null;
         }
     }
 
@@ -48,4 +75,48 @@ public class ModelPlacementManager : MonoBehaviour
         _ARPlacementInteractable.placementPrefab = null;
     }
 
+    public void AddPlacedModel(Model model)
+    {
+        _placedModels.Add(model);
+        foreach(Model placedModel in _placedModels)
+        {
+            Debug.Log("This is " + placedModel);
+        }
+    }
+
+    public void Enabled(bool enabled)
+    {
+        if(enabled)
+        {
+            _enabled = true;
+        }else
+        {
+            _enabled = false;
+        }
+    }
+
+    private void ShowModelButtons(bool enabled)
+    {
+        if (enabled)
+        {
+            foreach (ModelButton modelButton in _modelButtons)
+            {
+                modelButton.gameObject.SetActive(true);
+            }
+        } else
+        {
+            foreach (ModelButton modelButton in _modelButtons)
+            {
+                modelButton.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void UnselectAllModelButtons()
+    {
+        foreach (ModelButton modelButton in _modelButtons)
+        {
+            modelButton.SetIsSelected(false) ;
+        }
+    }
 }

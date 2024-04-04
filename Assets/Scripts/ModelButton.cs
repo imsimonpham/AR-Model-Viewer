@@ -58,13 +58,7 @@ public class ModelButton : MonoBehaviour
     }
 
     //get functions
-    public GameObject GetModelPrefab()
-    {
-        return _modelPrefab;
-    }
+    public GameObject GetModelPrefab() { return _modelPrefab; }
 
-    public bool IsSelected()
-    {
-        return _isSelected;
-    }
+    public bool IsSelected() { return _isSelected; }
 }

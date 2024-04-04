@@ -7,7 +7,7 @@ public class Actions : MonoBehaviour
 {
     [Header("Generals")]
     [SerializeField] private string _prefabName;
-    [SerializeField] private bool _isExecutingActions = true;
+    private bool _isExecutingActions = false;
 
     [Header("Plane Actions")]
     [SerializeField] private Animator _planeAnim;
@@ -15,8 +15,6 @@ public class Actions : MonoBehaviour
     [SerializeField] private float _propellerAcceleration; 
     [SerializeField] private float _maxSpinningSpeed;
     private float _currentSpinningSpeed = 0f; 
-    private Vector3 _cachedPos;
-    private Quaternion _cachedRot;
 
     [Header("Soldier Actions")]
     [SerializeField] private Animator _soldierAnim;
@@ -26,12 +24,6 @@ public class Actions : MonoBehaviour
     [SerializeField] private Animator _tankAnim;
     [SerializeField] private GameObject _muzzleFlash;
     [SerializeField] private GameObject _firePoint;
-
-    private void Start()
-    {
-        _cachedPos = transform.position;
-        _cachedRot = transform.rotation;
-    }
 
     void Update()
     {

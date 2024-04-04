@@ -258,7 +258,7 @@ Transform:
   m_Children:
   - {fileID: 4958393107007061748}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1151180327243758952
 BoxCollider:
@@ -635,12 +635,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6691215723272723983}
+        m_TargetAssemblyTypeName: Model, Assembly-CSharp
+        m_MethodName: RequestExamine
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6691215723272723983}
         m_TargetAssemblyTypeName: Model, Assembly-CSharp
         m_MethodName: UnselectModel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6691215723272723983}
+        m_TargetAssemblyTypeName: Model, Assembly-CSharp
+        m_MethodName: RequestUnexamine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -702,6 +726,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2a5bcc9cd7dfc49be20427740bd2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectionVis: {fileID: 2308866219741142450}
+  _examineScaleOffset: 1.2
+  _translation: {fileID: 992359725376215822}
+  _rotation: {fileID: 2489466770395134392}
+  _scale: {fileID: 8967532674030153590}
 --- !u!114 &2496044448029572763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,13 +744,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabName: Tank
+  _planeAnim: {fileID: 0}
   _propeller: {fileID: 0}
   _propellerAcceleration: 0
   _maxSpinningSpeed: 0
-  _riseSpeed: 0
-  _bobbingSpeed: 0
-  _bobbingAmount: 0
-  _yPosBoost: 0
   _soldierAnim: {fileID: 0}
   _turret: {fileID: 3744179687041889340}
   _tankAnim: {fileID: 8908804013808488664}

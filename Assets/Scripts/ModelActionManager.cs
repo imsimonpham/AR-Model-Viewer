@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ModelActionManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class ModelActionManager : MonoBehaviour
         }
     }   
     private Model _selectedPlacedModel;
+    private List<Model> _modelsInActions = new List<Model>();
+    private bool _enabled;
 
     private void Awake()
     {
@@ -22,6 +25,12 @@ public class ModelActionManager : MonoBehaviour
 
     private void Update()
     {
+        if (!_enabled)
+        {
+           _selectedPlacedModel = null;
+            StopAllModelActions();
+        } 
+
         if (_selectedPlacedModel != null)
         {
             UIManager.Instance.ShowFunctionButtonByName("Play");
@@ -30,13 +39,14 @@ public class ModelActionManager : MonoBehaviour
         else
         {
             UIManager.Instance.HideFunctionButtonByName("Play");
+            UIManager.Instance.HideFunctionButtonByName("Pause");
         }
 
-        if (_selectedPlacedModel.IsPlayingActions())
+        if (_selectedPlacedModel != null && _selectedPlacedModel.IsPlayingActions())
         {
             UIManager.Instance.HideFunctionButtonByName("Play");
             UIManager.Instance.ShowFunctionButtonByName("Pause");
-        } 
+        }
     }
 
     public void SetSelectedPlacedModel(Model model)
@@ -61,50 +71,34 @@ public class ModelActionManager : MonoBehaviour
         _selectedPlacedModel.SetIsPlayingActions(false);
     }
 
-    /*private Examinable _selectedExaminable;
-    private bool _isPlayingFunctions;
-    [SerializeField] private UIManager _uiManager;
-
-    private void Update()
+    void StopAllModelActions()
     {
-       
+        foreach(Model model in _modelsInActions)
+        {
+            model.GetComponent<Actions>().PlayActions(false);
+            model.SetIsPlayingActions(false);
+        }
     }
 
-    public void SelectExaminable(Examinable examinable)
-    {  
-        if(_uiManager.IsInExamineMode()) { return; }
-        if (_isPlayingFunctions) { return; }
-        //execute these only when examinable is not in function
-        _selectedExaminable = examinable;
-        _uiManager.ShowButtonByName("Play");
-    }
-
-    public void UnselectExaminable()
+    public void AddToModelsInActionsList(Model model)
     {
-        if (_uiManager.IsInExamineMode()) { return; }
-        if (_isPlayingFunctions) { return; }
-        //execute these only when examinable is not in function
-        _selectedExaminable = null;
-        _uiManager.HideButtonByName("Play");
-        _uiManager.HideButtonByName("Pause");
+        _modelsInActions.Add(model);
     }
 
-    public void PerformPlayActions()
-    { 
-        if (_selectedExaminable == null) { return; }
-        _selectedExaminable.GetActions().PlayActions(true);
-        _isPlayingFunctions = true;
-        _uiManager.DisableButtonByName("Examine");
-    }
-
-    public void PerformStopActions()
+    public void RemoveFromModelsInActionsList(Model model)
     {
-        if (_selectedExaminable == null) { return; }
-        _selectedExaminable.GetActions().PlayActions(false);
-        _isPlayingFunctions = false;
-        _uiManager.EnableButtonByName("Examine");
-        if (_selectedExaminable.GetIsSelected()) { return; }
-        //execute this only when examinale is not selected
-        UnselectExaminable();
-    }*/
+        _modelsInActions.Remove(model);   
+    }
+
+    public void Enabled(bool enabled)
+    {
+        if (enabled)
+        {
+            _enabled = true;
+        }
+        else
+        {
+            _enabled = false;
+        }
+    }
 }

@@ -1,14 +1,25 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class Model : MonoBehaviour
 {
     private bool _isSelected;
     private bool _isPlayingActions;
 
-    private void Update()
+    [Header("Examinable Fields")]
+    [SerializeField] private GameObject _selectionVis;
+    [SerializeField] private float _examineScaleOffset;
+
+    [Header("Interactables")]
+    [SerializeField] ARTranslationInteractable _translation;
+    [SerializeField] ARRotationInteractable _rotation;
+    [SerializeField] ARScaleInteractable _scale;
+
+    private void OnEnable()
     {
+        ModelPlacementManager.Instance.AddPlacedModel(this);
     }
 
     public void SelectModel()
@@ -28,19 +39,61 @@ public class Model : MonoBehaviour
         if (playing)
         {
             _isPlayingActions = true;
-        }else
+            ModelActionManager.Instance.AddToModelsInActionsList(this);
+        }
+        else
         {
-            _isPlayingActions = false;  
+            _isPlayingActions = false;
+            ModelActionManager.Instance.RemoveFromModelsInActionsList(this);
         }
     }
 
-    public bool IsSelected()
+    public void DisableInteractables()
     {
-        return _isSelected;
+        _translation.enabled = false;
+        _rotation.enabled = false;
+        _scale.enabled = false;
     }
 
-    public bool IsPlayingActions()
+    public void EnableInteractables()
     {
-        return _isPlayingActions;
+        _translation.enabled = true;
+        _rotation.enabled = true;
+        _scale.enabled = true;
     }
+
+
+    public void DisableSelectionVis()
+    {
+        _selectionVis.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    public void EnableSelectionVis()
+    {
+        _selectionVis.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+   public void RequestExamine()
+    {
+        ModelExamineManager examineManager = ModelExamineManager.Instance;
+        if (examineManager.IsEnabled())
+        {
+            examineManager.PerformExamine(this);
+        }
+    }
+
+    public void RequestUnexamine()
+    {
+        ModelExamineManager examineManager = ModelExamineManager.Instance;
+        if (examineManager.IsEnabled())
+        {
+            examineManager.PerformUnexamine();
+        }
+    }
+
+    public float GetExamineScaleOffset() { return _examineScaleOffset; }
+
+    public bool IsSelected() { return _isSelected; }
+
+    public bool IsPlayingActions() { return _isPlayingActions; }
 }
