@@ -14,8 +14,8 @@ public class ModelActionManager : MonoBehaviour
             return _instance;
         }
     }   
-    private Model _selectedPlacedModel;
-    private List<Model> _modelsInActions = new List<Model>();
+    private Desktop.Model _selectedPlacedModel;
+    private List<Desktop.Model> _modelsInActions = new List<Desktop.Model>();
     private bool _enabled;
 
     private void Awake()
@@ -49,7 +49,7 @@ public class ModelActionManager : MonoBehaviour
         }
     }
 
-    public void SetSelectedPlacedModel(Model model)
+    public void SetSelectedPlacedModel(Desktop.Model model)
     {
         _selectedPlacedModel = model;
     }
@@ -73,19 +73,19 @@ public class ModelActionManager : MonoBehaviour
 
     void StopAllModelActions()
     {
-        foreach(Model model in _modelsInActions)
+        foreach(Desktop.Model model in _modelsInActions)
         {
             model.GetComponent<Actions>().PlayActions(false);
             model.SetIsPlayingActions(false);
         }
     }
 
-    public void AddToModelsInActionsList(Model model)
+    public void AddToModelsInActionsList(Desktop.Model model)
     {
         _modelsInActions.Add(model);
     }
 
-    public void RemoveFromModelsInActionsList(Model model)
+    public void RemoveFromModelsInActionsList(Desktop.Model model)
     {
         _modelsInActions.Remove(model);   
     }

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     }
 
     private bool _isInExaminemode;
+    private bool _isInDrivewayMode;
 
     private void Awake()
     {
@@ -31,13 +32,13 @@ public class GameManager : MonoBehaviour
         {
             ModelExamineManager.Instance.Enabled(true);
             ModelActionManager.Instance.Enabled(false);
-            ModelPlacementManager.Instance.Enabled(false);
+            Desktop.ModelPlacementManager.Instance.Enabled(false);
         }
         else
         {
-            ModelExamineManager.Instance.Enabled(false);
-            ModelPlacementManager.Instance.Enabled(true);
+            ModelExamineManager.Instance.Enabled(false);          
             ModelActionManager.Instance.Enabled(true);
+            Desktop.ModelPlacementManager.Instance.Enabled(true);
         }
     }
 
@@ -50,5 +51,10 @@ public class GameManager : MonoBehaviour
         {
             _isInExaminemode = false;
         }
+    }
+
+    public void SwitchScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
 }
