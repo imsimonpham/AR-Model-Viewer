@@ -86,14 +86,20 @@ namespace Driveway
             _ARPlaneManager.enabled = true;
         }
 
-        public void ResetScene()
+        public void RemovePlacedModel()
         {
-            Debug.Log("Start Destroying...");
-            /*_ARPlacementInteractable.PlaceObject(Pose pose);*/
+            Model placedModel = FindObjectOfType<Model>();
+            if (placedModel != null)
+            {
+                Destroy(placedModel.gameObject);
+            }
+            else
+            {
+                Debug.Log("Couldn't find placed model");
+            }
             ShowModelButtonContainer();
+            EnableARPlanes();
             UIManager.Instance.HideFunctionButtonByName("Return");
-            Debug.Log("End Destroying...");
-            /*SceneManager.LoadScene(0);*/
         }
     }
 }

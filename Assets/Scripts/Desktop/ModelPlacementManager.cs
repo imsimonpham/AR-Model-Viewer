@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.AR;
+using UnityEngine.XR.ARFoundation;
 
 namespace Desktop
 {
@@ -19,6 +20,7 @@ namespace Desktop
 
         private ModelButton _selectedModelButton;
         [SerializeField] private ARPlacementInteractable _ARPlacementInteractable;
+        [SerializeField] private ARPlaneManager _ARPlaneManager;
         [SerializeField] private ModelButton[] _modelButtons;
         private List<Model> _placedModels = new List<Model>();
         private bool _enabled;
@@ -79,6 +81,7 @@ namespace Desktop
             _selectedModelButton.SetIsSelected(false);
             _selectedModelButton.SetSpriteEmpty();
             _ARPlacementInteractable.placementPrefab = null;
+            DisableARPlanes();
         }
 
         public void AddPlacedModel(Model model)
@@ -122,6 +125,18 @@ namespace Desktop
             {
                 modelButton.SetIsSelected(false);
             }
+        }
+
+        public void DisableARPlanes()
+        {
+            _ARPlaneManager.SetTrackablesActive(false);
+            _ARPlaneManager.enabled = false;
+        }
+
+        public void EnableARPlanes()
+        {
+            _ARPlaneManager.SetTrackablesActive(true);
+            _ARPlaneManager.enabled = true;
         }
     }
 }

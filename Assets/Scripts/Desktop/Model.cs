@@ -25,12 +25,14 @@ namespace Desktop
         public void SelectModel()
         {
             _isSelected = true;
+            ModelPlacementManager.Instance.EnableARPlanes();
             ModelActionManager.Instance.SetSelectedPlacedModel(this);
         }
 
         public void UnselectModel()
         {
             _isSelected = false;
+            ModelPlacementManager.Instance.DisableARPlanes();
             ModelActionManager.Instance.SetUnselectedPlacedModel();
         }
 
@@ -40,11 +42,14 @@ namespace Desktop
             {
                 _isPlayingActions = true;
                 ModelActionManager.Instance.AddToModelsInActionsList(this);
+                ModelPlacementManager.Instance.DisableARPlanes();
             }
             else
             {
                 _isPlayingActions = false;
                 ModelActionManager.Instance.RemoveFromModelsInActionsList(this);
+                if (!_isSelected) { return; }
+                ModelPlacementManager.Instance.EnableARPlanes();
             }
         }
 

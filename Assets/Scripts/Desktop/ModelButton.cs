@@ -17,6 +17,7 @@ namespace Desktop
             if (_isSelected)
             {
                 ShowBackground();
+                ModelPlacementManager.Instance.EnableARPlanes();
             }
             else
             {
