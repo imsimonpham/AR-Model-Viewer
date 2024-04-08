@@ -12,12 +12,17 @@ public class UIManager : MonoBehaviour
         get
         {
             if (_instance == null)
-                Debug.Log("UI Manager is null");
+                Debug.LogError("UI Manager is null");
             return _instance;
         }
     }
     [SerializeField] private Button[] _functionButtions;
     [SerializeField] private GameObject[] _modals;
+
+    [Header("Driveway")]
+    [SerializeField] private Button[] _customizationButtons;
+    private Sprite[] _colorVariants;
+
     private void Awake()
     {
         _instance = this;
@@ -108,5 +113,22 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    
+    public void SetupCustomizationButtons(Driveway.Model model)
+    {
+        _colorVariants = model.GetColorVariants();
+        // Ensure there's a matching number of buttons and color variants to avoid index out of range errors
+        int count = Mathf.Min(_customizationButtons.Length, _colorVariants.Length);
+        for (var i = 0; i < count; i++)
+        {
+            var button = _customizationButtons[i];
+            var sprite = _colorVariants[i];
+
+            // Get the Image component of the button's first child and set its sprite
+            var image = button.transform.GetChild(0).GetComponent<Image>();
+            if (image != null) // Check if the Image component is found
+            {
+                image.sprite = sprite;
+            }
+        }
+    }
 }

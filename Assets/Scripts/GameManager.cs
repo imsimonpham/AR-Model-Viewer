@@ -8,13 +8,12 @@ public class GameManager : MonoBehaviour
         get
         {
             if (_instance == null)
-                Debug.Log("Game Manager is null!");
+                Debug.LogError("Game Manager is null!");
             return _instance;
         }
     }
 
     private bool _isInExaminemode;
-    private bool _isInDrivewayMode;
 
     private void Awake()
     {
@@ -28,18 +27,22 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (_isInExaminemode)
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name == "Desktop")
         {
-            ModelExamineManager.Instance.Enabled(true);
-            ModelActionManager.Instance.Enabled(false);
-            Desktop.ModelPlacementManager.Instance.Enabled(false);
-        }
-        else
-        {
-            ModelExamineManager.Instance.Enabled(false);          
-            ModelActionManager.Instance.Enabled(true);
-            Desktop.ModelPlacementManager.Instance.Enabled(true);
-        }
+            if (_isInExaminemode)
+            {
+                ModelExamineManager.Instance.Enabled(true);
+                ModelActionManager.Instance.Enabled(false);
+                Desktop.ModelPlacementManager.Instance.Enabled(false);
+            }
+            else
+            {
+                ModelExamineManager.Instance.Enabled(false);
+                ModelActionManager.Instance.Enabled(true);
+                Desktop.ModelPlacementManager.Instance.Enabled(true);
+            }
+        } 
     }
 
     public void EnableExamineMode(bool enabled)

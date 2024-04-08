@@ -14,18 +14,21 @@ namespace Driveway
             get
             {
                 if (_instance == null)
-                    Debug.Log("Model Placement Manager is null");
+                    Debug.LogError("Model Placement Manager is null");
                 return _instance;
             }
         }
 
         private ModelButton _selectedModelButton;
-        private Model _placedModel;
         [SerializeField] private ARPlacementInteractable _ARPlacementInteractable;
         [SerializeField] private ModelButton[] _modelButtons;
         [SerializeField] private GameObject _modelButtonsContainer;
-        [SerializeField] private ARPlaneManager _ARPlaneManager; 
-        private List<Model> _placedModels = new List<Model>();
+        [SerializeField] private ARPlaneManager _ARPlaneManager;
+
+        private void Awake()
+        {
+            _instance = this;
+        }
 
         public void SetSelectedPlacementModel(ModelButton button)
         {
@@ -57,12 +60,19 @@ namespace Driveway
             HideModelButtonContainer();
             DisableARPlanes();
             UIManager.Instance.ShowFunctionButtonByName("Return");
-        }
+            UIManager.Instance.ShowFunctionButtonByName("Customize");
 
-        public void AddPlacedModel(Model model)
-        {
-            _placedModels.Add(model);
-        }
+            Model placedModel = FindObjectOfType<Model>();
+            if (placedModel != null)
+            {
+                Debug.Log("Placed Model is NOT null");
+                UIManager.Instance.SetupCustomizationButtons(placedModel);
+                CustomizationManager.Instance.ConfigureCurrentModel(placedModel);
+            } else
+            {
+                Debug.LogError("Placed Model is null");
+            }   
+        } 
 
         public void ShowModelButtonContainer()
         {
@@ -95,11 +105,12 @@ namespace Driveway
             }
             else
             {
-                Debug.Log("Couldn't find placed model");
+                Debug.LogError("Couldn't find placed model");
             }
             ShowModelButtonContainer();
             EnableARPlanes();
             UIManager.Instance.HideFunctionButtonByName("Return");
+            UIManager.Instance.HideFunctionButtonByName("Customize");
         }
     }
 }

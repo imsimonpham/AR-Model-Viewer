@@ -1,18 +1,47 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit.AR;
 
 namespace Driveway
 {
+    [System.Serializable]
+    public class MaterialOption
+    {
+        [SerializeField] private Material[] _materials;
+        public Material[] GetMaterialList()
+        {
+            return _materials;
+        }
+    }
     public class Model : MonoBehaviour
     {
-        private bool _isSelected;
-        [SerializeField] ARRotationInteractable _rotation;
+        [SerializeField] private MaterialOption[] _options;
 
-        private void OnEnable()
+        [SerializeField] private GameObject[] _parts;
+        [SerializeField] private Sprite[] _colorVariants;
+
+       /* private void Start()
         {
-            ModelPlacementManager.Instance.AddPlacedModel(this);
+            Debug.Log(GetParts(0).GetComponent<Renderer>().material);
+        }*/
+
+        public Sprite[] GetColorVariants()
+        {
+            return _colorVariants;
+        }
+
+        public MaterialOption[] GetMaterialOptions()
+        {
+            return _options;
+        }
+
+        public MaterialOption GetMaterialOptionByIndex(int index)
+        {
+            return _options[index];
+        }
+
+        public GameObject GetParts(int index)
+        {
+            return _parts[index];
         }
     }
 }
