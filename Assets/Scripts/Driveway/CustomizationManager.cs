@@ -1,27 +1,11 @@
 using UnityEngine;
 
-public class CustomizationManager : MonoBehaviour
-{
-    private static CustomizationManager _instance;
-    public static CustomizationManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-                Debug.LogError("Customization Manager is null");
-            return _instance;
-        }
-    }
-
+public class CustomizationManager : MonoSingleton<CustomizationManager>
+{ 
     private Driveway.Model _currentModel;
     private CustomizationButton _currentlySelectedButton;
     [SerializeField] private CustomizationButton[] _customizationButtons;
     private Driveway.MaterialOption[] _materialOptionList;
-
-    private void Awake()
-    {
-        _instance = this;
-    }
 
     void SetActiveButtonByID(int buttonID)
     {

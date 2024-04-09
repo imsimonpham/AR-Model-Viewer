@@ -4,18 +4,8 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoSingleton<UIManager>
 {
-    private static UIManager _instance;
-    public static UIManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-                Debug.LogError("UI Manager is null");
-            return _instance;
-        }
-    }
     [SerializeField] private TextMeshProUGUI _currentModeText;
     [SerializeField] private Button[] _functionButtions;
     [SerializeField] private GameObject[] _modals;
@@ -24,11 +14,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button[] _customizationButtons;
     [SerializeField] private GameObject _colorPalette;
     private Sprite[] _colorVariants;
-
-    private void Awake()
-    {
-        _instance = this;
-    }
 
     public void Update()
     {

@@ -5,30 +5,14 @@ using UnityEngine.XR.ARFoundation;
 
 namespace Desktop
 {
-    public class ModelPlacementManager : MonoBehaviour
+    public class ModelPlacementManager : MonoSingleton<ModelPlacementManager>
     {
-        private static ModelPlacementManager _instance;
-        public static ModelPlacementManager Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    Debug.Log("Model Placement Manager is null");
-                return _instance;
-            }
-        }
-
         private ModelButton _selectedModelButton;
         [SerializeField] private ARPlacementInteractable _ARPlacementInteractable;
         [SerializeField] private ARPlaneManager _ARPlaneManager;
         [SerializeField] private ModelButton[] _modelButtons;
         private List<Model> _placedModels = new List<Model>();
         private bool _enabled;
-
-        private void Awake()
-        {
-            _instance = this;
-        }
 
         private void Update()
         {

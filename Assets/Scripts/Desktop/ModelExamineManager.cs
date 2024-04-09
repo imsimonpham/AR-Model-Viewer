@@ -1,18 +1,7 @@
 using UnityEngine;
 
-public class ModelExamineManager : MonoBehaviour
+public class ModelExamineManager : MonoSingleton<ModelExamineManager>
 {
-    private static ModelExamineManager _instance;
-    public static ModelExamineManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-                Debug.Log("Examinable Manager is null");
-            return _instance;
-        }
-    }
-
     [SerializeField] private Transform _examineTarget;
     private Vector3 _cachedPos;
     private Quaternion _cachedRot;
@@ -24,11 +13,6 @@ public class ModelExamineManager : MonoBehaviour
     private bool _isExamining = false;
 
     private bool _enabled;
-
-    private void Awake()
-    {
-        _instance = this;
-    }
 
     private void Update()
     {

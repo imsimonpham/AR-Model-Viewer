@@ -2,26 +2,11 @@ using Desktop;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModelActionManager : MonoBehaviour
+public class ModelActionManager : MonoSingleton<ModelActionManager>
 {
-    private static ModelActionManager _instance;
-    public static ModelActionManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-                Debug.Log("Model Action Manager is null");
-            return _instance;
-        }
-    }   
     private Desktop.Model _selectedPlacedModel;
     private List<Desktop.Model> _modelsInActions = new List<Desktop.Model>();
     private bool _enabled;
-
-    private void Awake()
-    {
-        _instance = this;
-    }
 
     private void Update()
     {
