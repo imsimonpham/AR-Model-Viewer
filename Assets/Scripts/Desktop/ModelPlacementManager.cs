@@ -138,6 +138,18 @@ namespace Desktop
             _ARPlaneManager.SetTrackablesActive(true);
             _ARPlaneManager.enabled = true;
         }
+
+        public ModelButton GetModelButtonByName(string name)
+        {
+            foreach (ModelButton button in _modelButtons)
+            {
+                if (button.name == name)
+                {
+                    return button;
+                }
+            }
+            return null;
+        }
     }
 }
 

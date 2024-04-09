@@ -1,6 +1,6 @@
+using Desktop;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class ModelActionManager : MonoBehaviour
 {
@@ -35,16 +35,19 @@ public class ModelActionManager : MonoBehaviour
         {
             UIManager.Instance.ShowFunctionButtonByName("Play");
             UIManager.Instance.HideFunctionButtonByName("Pause");
+            UIManager.Instance.ShowFunctionButtonByName("Remove");
         }
         else
         {
             UIManager.Instance.HideFunctionButtonByName("Play");
             UIManager.Instance.HideFunctionButtonByName("Pause");
+            UIManager.Instance.HideFunctionButtonByName("Remove");
         }
 
         if (_selectedPlacedModel != null && _selectedPlacedModel.IsPlayingActions())
         {
             UIManager.Instance.HideFunctionButtonByName("Play");
+            UIManager.Instance.HideFunctionButtonByName("Remove");
             UIManager.Instance.ShowFunctionButtonByName("Pause");
         }
     }
@@ -99,6 +102,26 @@ public class ModelActionManager : MonoBehaviour
         else
         {
             _enabled = false;
+        }
+    }
+     public void RemoveSelectedPlacedModel()
+    {
+        Model[] placedModels = FindObjectsOfType<Model>();
+        if (placedModels.Length > 0)
+        {
+            foreach(Model placedModel in placedModels)
+            {
+                if(placedModel == _selectedPlacedModel)
+                {
+                    ModelButton modelButton = ModelPlacementManager.Instance.GetModelButtonByName(placedModel.gameObject.tag);
+                    modelButton.SetSprite();
+                    Destroy(placedModel.gameObject);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Couldn't find any placed models");
         }
     }
 }

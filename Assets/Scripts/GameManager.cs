@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         Scene scene = SceneManager.GetActiveScene();
-        if(scene.name == "Desktop")
+        UIManager.Instance.UpdateCurrentModeText(scene.name + " Mode");
+        if (scene.name == "Desktop")
         {
             if (_isInExaminemode)
             {
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
                 ModelActionManager.Instance.Enabled(true);
                 Desktop.ModelPlacementManager.Instance.Enabled(true);
             }
-        } 
+        }
     }
 
     public void EnableExamineMode(bool enabled)

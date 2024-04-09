@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Driveway.unity
-    guid: b70bc4b99206f5b4386f5b4d4da78d20
-  - enabled: 1
     path: Assets/Scenes/Desktop.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Driveway.unity
+    guid: b70bc4b99206f5b4386f5b4d4da78d20
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 5b9db4a1701e714448862a15ca1fd293,
       type: 2}

@@ -33,6 +33,13 @@ namespace Desktop
             this.GetComponent<Button>().interactable = false;
         }
 
+        public void SetSprite()
+        {
+            _sprite.gameObject.SetActive(true);
+            _greySprite.gameObject.SetActive(false);
+            this.GetComponent<Button>().interactable = true;
+        }
+
         public void SetIsSelected(bool selected)
         {
             if (selected)

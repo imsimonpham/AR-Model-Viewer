@@ -1,6 +1,4 @@
-using UnityEngine.UI;
 using UnityEngine;
-using System.Runtime.CompilerServices;
 
 public class CustomizationManager : MonoBehaviour
 {
@@ -16,7 +14,8 @@ public class CustomizationManager : MonoBehaviour
     }
 
     private Driveway.Model _currentModel;
-    [SerializeField] private Button[] _customizationButtons;
+    private CustomizationButton _currentlySelectedButton;
+    [SerializeField] private CustomizationButton[] _customizationButtons;
     private Driveway.MaterialOption[] _materialOptionList;
 
     private void Awake()
@@ -24,17 +23,33 @@ public class CustomizationManager : MonoBehaviour
         _instance = this;
     }
 
+    void SetActiveButtonByID(int buttonID)
+    {
+        foreach(CustomizationButton button in _customizationButtons)
+        {
+            if(button.GetButtonID() == buttonID)
+            {
+                _currentlySelectedButton = button;
+                _currentlySelectedButton.Activate(true);
+            }else
+            {
+                button.Activate(false);
+            }
+        }
+    }
+
     public void ConfigureCurrentModel(Driveway.Model model)
     {
         _currentModel = model;
         _materialOptionList = model.GetMaterialOptions();
+        SetActiveButtonByID(0);
     }
 
     public void ChangeCurrentModelColor(int buttonID)
     {     
         if (_currentModel != null) {
-            Debug.Log(_currentModel.name);
-            if (_currentModel.name != "Tank(Clone)")
+            SetActiveButtonByID(buttonID);
+            if (!_currentModel.CompareTag("Tank"))
             {
                 Renderer renderer = _currentModel.GetParts(0).GetComponent<Renderer>();
                 renderer.material = _materialOptionList[buttonID].GetMaterialList()[0];

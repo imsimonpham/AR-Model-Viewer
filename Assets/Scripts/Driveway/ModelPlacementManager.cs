@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.Interaction.Toolkit.AR;
-using UnityEngine.SceneManagement;
 
 namespace Driveway
 {
@@ -65,7 +63,6 @@ namespace Driveway
             Model placedModel = FindObjectOfType<Model>();
             if (placedModel != null)
             {
-                Debug.Log("Placed Model is NOT null");
                 UIManager.Instance.SetupCustomizationButtons(placedModel);
                 CustomizationManager.Instance.ConfigureCurrentModel(placedModel);
             } else

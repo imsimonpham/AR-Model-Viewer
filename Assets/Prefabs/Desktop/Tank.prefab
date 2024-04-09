@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 2496044448029572763}
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -726,6 +726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2a5bcc9cd7dfc49be20427740bd2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _modelName: Tank
   _selectionVis: {fileID: 2308866219741142450}
   _examineScaleOffset: 1.2
   _translation: {fileID: 992359725376215822}

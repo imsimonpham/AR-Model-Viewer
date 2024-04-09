@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Driveway
@@ -19,11 +18,6 @@ namespace Driveway
         [SerializeField] private GameObject[] _parts;
         [SerializeField] private Sprite[] _colorVariants;
 
-       /* private void Start()
-        {
-            Debug.Log(GetParts(0).GetComponent<Renderer>().material);
-        }*/
-
         public Sprite[] GetColorVariants()
         {
             return _colorVariants;
@@ -32,11 +26,6 @@ namespace Driveway
         public MaterialOption[] GetMaterialOptions()
         {
             return _options;
-        }
-
-        public MaterialOption GetMaterialOptionByIndex(int index)
-        {
-            return _options[index];
         }
 
         public GameObject GetParts(int index)

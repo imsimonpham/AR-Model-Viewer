@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,11 +16,13 @@ public class UIManager : MonoBehaviour
             return _instance;
         }
     }
+    [SerializeField] private TextMeshProUGUI _currentModeText;
     [SerializeField] private Button[] _functionButtions;
     [SerializeField] private GameObject[] _modals;
 
     [Header("Driveway")]
     [SerializeField] private Button[] _customizationButtons;
+    [SerializeField] private GameObject _colorPalette;
     private Sprite[] _colorVariants;
 
     private void Awake()
@@ -130,5 +132,15 @@ public class UIManager : MonoBehaviour
                 image.sprite = sprite;
             }
         }
+    }
+
+    public void ToggleColorPallete()
+    {
+        _colorPalette.SetActive(!_colorPalette.activeSelf);
+    }
+
+    public void UpdateCurrentModeText(string currentMode)
+    {
+        _currentModeText.text = currentMode;
     }
 }

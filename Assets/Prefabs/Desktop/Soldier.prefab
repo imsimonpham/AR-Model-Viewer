@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 5781499600836139032}
   m_Layer: 0
   m_Name: Soldier
-  m_TagString: Untagged
+  m_TagString: Soldier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,6 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2a5bcc9cd7dfc49be20427740bd2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _modelName: Soldier
   _selectionVis: {fileID: 3147875416827183700}
   _examineScaleOffset: 1.5
   _translation: {fileID: 8127098917790961594}
