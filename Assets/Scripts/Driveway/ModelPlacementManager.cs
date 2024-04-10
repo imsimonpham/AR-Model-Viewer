@@ -108,6 +108,7 @@ namespace Driveway
             EnableARPlanes();
             UIManager.Instance.HideFunctionButtonByName("Return");
             UIManager.Instance.HideFunctionButtonByName("Customize");
+            UIManager.Instance.HideColorPallete();
         }
     }
 }

@@ -124,6 +124,11 @@ public class UIManager : MonoSingleton<UIManager>
         _colorPalette.SetActive(!_colorPalette.activeSelf);
     }
 
+    public void HideColorPallete()
+    {
+        _colorPalette.SetActive(false);
+    }
+
     public void UpdateCurrentModeText(string currentMode)
     {
         _currentModeText.text = currentMode;
